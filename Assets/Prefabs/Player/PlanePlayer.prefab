@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7340882914145143730}
   - component: {fileID: 4371298190872036336}
   - component: {fileID: 561042628187301020}
+  - component: {fileID: 724004502}
   m_Layer: 0
   m_Name: PlanePlayer
   m_TagString: Player
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3584234253559508745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 109427913770488051}
   m_Father: {fileID: 0}
@@ -76,12 +77,28 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 1
+--- !u!114 &724004502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3584234253559508745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d46b44de4c89547bdf1aea25cd5b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 5
+  rotationSpeed: 2
+  playerBoundsX: 3.25
+  playerBoundsY: 6
 --- !u!1 &5722507400238962679
 GameObject:
   m_ObjectHideFlags: 0

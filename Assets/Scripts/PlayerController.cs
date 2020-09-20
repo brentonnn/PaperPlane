@@ -41,14 +41,14 @@ public class PlayerController : MonoBehaviour
 
     private void Controls()
     {
-        transform.Translate(Vector3.up * Time.deltaTime * moveSpeed);
-        if (TouchControlsHandler.left)
+        transform.Translate(Vector3.up * Time.deltaTime * movementSpeed);
+        if (ControlHandler.left)
         {
-            transform.Rotate(Vector3.forward * rotSpeed);
+            transform.Rotate(Vector3.forward * rotationSpeed);
         }
-        else if (TouchControlsHandler.right)
+        else if (ControlHandler.right)
         {
-            transform.Rotate(-Vector3.forward * rotSpeed);
+            transform.Rotate(-Vector3.forward * rotationSpeed);
         }
     }
 }
