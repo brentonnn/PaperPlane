@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float enemyBoundsX = 3.25F;
     [SerializeField] private float enemyBoundsY = 6f;
 
-    [SerializeField] private float minTime = 4;
+    [SerializeField] private float minTime = 6;
     [SerializeField] private float maxTime = 8;
     
     
@@ -41,5 +41,11 @@ public class EnemyController : MonoBehaviour
 
             transform.Rotate(Vector3.forward * rotationSpeed);
         }
+    }
+
+
+    private void Disappear()
+    {
+        Destroy(gameObject);
     }
 }

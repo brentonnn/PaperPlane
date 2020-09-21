@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed = 0f;
     [SerializeField] private float playerBoundsX = 3.25F;
     [SerializeField] private float playerBoundsY = 6f;
-    
+
+    [SerializeField] private AudioSource playerDeathAudio = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,13 @@ public class PlayerController : MonoBehaviour
 
             PlayerWrapper();
         }
+
+        if (gameObject.transform.position.y < -8)
+        {
+            Destroy(gameObject);
+        }
+
+        
     }
     
     private void PlayerWrapper()
@@ -50,5 +59,23 @@ public class PlayerController : MonoBehaviour
         {
             transform.Rotate(-Vector3.forward * rotationSpeed);
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.tag == "Enemy")
+        {
+            PlayerSpawnerController.pCount = 0;
+            GameManager.isGameOver = true;
+            PlayDeathSound();
+            rotationSpeed *= 2;
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+        }
+        
+    }
+
+    private void PlayDeathSound()
+    {
+        playerDeathAudio.Play();
     }
 }

@@ -10,10 +10,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioSource gameOverAudio;
 
 
+    public static AudioManager Instance;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Instance = this;
+        menuAudio.Play();
     }
 
     // Update is called once per frame
@@ -21,4 +24,16 @@ public class AudioManager : MonoBehaviour
     {
         
     }
+
+    public void PlayDeathSound()
+    {
+        playerDeathAudio.Play();
+    }
+
+    public void PlayMainMenuSound()
+    {
+        menuAudio.Play();
+    }
+
+
 }
