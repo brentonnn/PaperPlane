@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject mainMenuUI = null;
     [SerializeField] private GameObject gamePlayUI = null;
     [SerializeField] private GameObject gameOverUI = null;
+    [SerializeField] private GameObject playerSpawner = null;
+    [SerializeField] private GameObject enemySpawner = null;
 
 
     [SerializeField] private TextMeshProUGUI gameTimeTxt = null;
@@ -54,6 +56,8 @@ public class GameManager : MonoBehaviour
                 minutes = 0;
                 seconds = 0;
 
+                
+
             }
 
 
@@ -68,11 +72,17 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGameStarted = true;
+        playerSpawner.SetActive(true);
+        enemySpawner.SetActive(true);
+
     }
 
     public void EndGame()
     {
         isGameStarted = false;
+        //deactivate spawners
+        playerSpawner.SetActive(false);
+        enemySpawner.SetActive(false);
     }
 
     public void BackToMainMenuBtn()

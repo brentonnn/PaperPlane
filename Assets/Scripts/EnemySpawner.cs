@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
             Instantiate(enemies[enemyNum], new Vector2(Random.Range(0, 2), Random.Range(0, 3)), Quaternion.identity);
             count++;
             
-            //tempTime = Random.Range(minTime, maxTime);
+            tempTime = Random.Range(minTime, maxTime);
         }
         else if(maxCount > count)
         {

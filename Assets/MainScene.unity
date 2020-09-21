@@ -303,6 +303,8 @@ MonoBehaviour:
   mainMenuUI: {fileID: 982884772}
   gamePlayUI: {fileID: 1264299227}
   gameOverUI: {fileID: 690360280}
+  playerSpawner: {fileID: 477410140}
+  enemySpawner: {fileID: 2056823151}
   gameTimeTxt: {fileID: 1963872021}
   gameOverTimeTxt: {fileID: 1046351219}
   isGameStarted: 0
