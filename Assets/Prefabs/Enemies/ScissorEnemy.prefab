@@ -169,5 +169,5 @@ MonoBehaviour:
   rotationSpeed: 0.5
   enemyBoundsX: 3.25
   enemyBoundsY: 6
-  minTime: 4
+  minTime: 2
   maxTime: 8

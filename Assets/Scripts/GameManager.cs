@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public bool isGameStarted = false;
     public static bool isGameOver = false;
+    private float lastScoreMin = 0f;
+    private float lastScoreSec = 0f;
     private int minutes = 0;
     private float seconds = 0f;
 
@@ -44,14 +46,16 @@ public class GameManager : MonoBehaviour
                     minutes++;
                 }
                 gameTimeTxt.SetText((minutes.ToString().Length > 1 ? minutes.ToString() : "0" + minutes.ToString()) + ":" + (((int)seconds).ToString().Length > 1 ? ((int)seconds).ToString() : "0" + ((int)seconds).ToString()));
+                lastScoreMin = minutes;
+                lastScoreSec = seconds;
             }
             else
             {
                 // set game over UI 
                 gameOverUI.SetActive(true);
                 gamePlayUI.SetActive(false);
-                gameOverTimeTxt.SetText((minutes.ToString().Length > 1 ? minutes.ToString() : "0" + minutes.ToString()) + ":" + (((int)seconds).ToString().Length > 1 ? ((int)seconds).ToString() : "0" + ((int)seconds).ToString()));
-
+                gameOverTimeTxt.SetText("Score: " + (lastScoreMin.ToString().Length > 1 ? lastScoreMin.ToString() : "0" + lastScoreMin.ToString()) + ":" + (((int)lastScoreSec).ToString().Length > 1 ? ((int)lastScoreSec).ToString() : "0" + ((int)lastScoreSec).ToString()));
+                StoreHighScore();
                 //reset timer
                 minutes = 0;
                 seconds = 0;
@@ -65,7 +69,18 @@ public class GameManager : MonoBehaviour
 
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
+        {
+            if (mainMenuUI.activeInHierarchy)
+            {
+                Application.Quit();
+            }
+            else
+            {
+                BackToMainMenuBtn();
+            }
+
+        }
+            
 
     }
 
@@ -79,19 +94,46 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        DestroyEnemyObjects();
+        DestroyPlayerObjects();
         isGameStarted = false;
+        isGameOver = true;
         //deactivate spawners
         playerSpawner.SetActive(false);
         enemySpawner.SetActive(false);
+        PlayerSpawnerController.pCount = 0;
+        EnemySpawner.ResetCount();
+
+    }
+
+    public void RestartGameBtn()
+    {
+        Debug.Log("restart");
+        DestroyEnemyObjects();
+        DestroyPlayerObjects();
+        gameOverUI.SetActive(false);
+        gamePlayUI.SetActive(true);
+        playerSpawner.SetActive(true);
+        enemySpawner.SetActive(true);
+        isGameOver = false;
+        isGameStarted = true;
+        PlayerSpawnerController.pCount = 0;
+        EnemySpawner.ResetCount();
     }
 
     public void BackToMainMenuBtn()
     {
+        EndGame();
+        minutes = 0;
+        seconds = 0;
         isGameOver = false;
         isGameStarted = false;
         gameOverUI.SetActive(false);
         gamePlayUI.SetActive(false);
         mainMenuUI.SetActive(true);
+        PlayerSpawnerController.pCount = 0;
+        EnemySpawner.ResetCount();
+
     }
 
     public void MuteAllBtn()
@@ -108,5 +150,35 @@ public class GameManager : MonoBehaviour
     public void ExitBtn()
     { 
         Application.Quit();
+    }
+
+    private void GetPreviousHighScore()
+    {
+        //TODO
+        Debug.Log("TODO");
+    }
+
+    private void StoreHighScore()
+    {
+        PlayerPrefs.SetInt("Minutes", (int)lastScoreMin);
+        PlayerPrefs.SetInt("Minutes", (int)lastScoreMin);
+    }
+
+    private void DestroyEnemyObjects()
+    {
+        GameObject[] allObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject obj in allObjects)
+        {
+            Destroy(obj);
+        }
+    }
+
+    private void DestroyPlayerObjects()
+    {
+        GameObject[] allObjects = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject obj in allObjects)
+        {
+            Destroy(obj);
+        }
     }
 }

@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float enemyBoundsY = 6f;
 
     [SerializeField] private float minTime = 6;
-    [SerializeField] private float maxTime = 8;
+    [SerializeField] private float maxTime = 12;
     
     
     private bool isDestroyed = false;

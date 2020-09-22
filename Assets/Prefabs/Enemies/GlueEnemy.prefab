@@ -87,8 +87,8 @@ MonoBehaviour:
   rotationSpeed: 0.5
   enemyBoundsX: 3.25
   enemyBoundsY: 6
-  minTime: 4
-  maxTime: 8
+  minTime: 6
+  maxTime: 12
 --- !u!1 &7402854902984315949
 GameObject:
   m_ObjectHideFlags: 0
