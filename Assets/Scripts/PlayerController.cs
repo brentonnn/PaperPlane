@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AudioSource playerDeathAudio = null;
 
+    [SerializeField] private SpriteRenderer sr = null;
+    [SerializeField] private Sprite sp = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,15 +70,16 @@ public class PlayerController : MonoBehaviour
         {
             PlayerSpawnerController.pCount = 0;
             GameManager.isGameOver = true;
-            PlayDeathSound();
+            PlayerDeath();
             rotationSpeed *= 2;
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
         }
         
     }
 
-    private void PlayDeathSound()
+    private void PlayerDeath()
     {
         playerDeathAudio.Play();
+        sr.sprite = sp;
     }
 }

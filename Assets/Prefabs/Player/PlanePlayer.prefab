@@ -101,6 +101,8 @@ MonoBehaviour:
   playerBoundsX: 3.25
   playerBoundsY: 6
   playerDeathAudio: {fileID: 616249319780169489}
+  sr: {fileID: 309199046562490292}
+  sp: {fileID: 21300000, guid: 83790779eeee840098d9c1793decc88e, type: 3}
 --- !u!82 &616249319780169489
 AudioSource:
   m_ObjectHideFlags: 0
