@@ -12,9 +12,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerSpawner = null;
     [SerializeField] private GameObject enemySpawner = null;
 
-
+    [SerializeField] private TextMeshProUGUI mainMenuHighScore = null;
     [SerializeField] private TextMeshProUGUI gameTimeTxt = null;
     [SerializeField] private TextMeshProUGUI gameOverTimeTxt = null;
+
+
+    [SerializeField] private GameObject mainMenuMuteBtn = null;
+    [SerializeField] private GameObject mainMenuUnMuteBtn = null;
+    [SerializeField] private GameObject gameMuteBtn = null;
+    [SerializeField] private GameObject gameUnMuteBtn = null;
+
+    [SerializeField] private GameObject helpText = null;
+
+    public int allTimeHighScoreMinutes;
+    public int allTimeHighScoreSeconds;
 
     public bool isGameStarted = false;
     public static bool isGameOver = false;
@@ -29,6 +40,7 @@ public class GameManager : MonoBehaviour
     {
         minutes = 0;
         seconds = 0f;
+        GetHighScore();
         
     }
 
@@ -55,12 +67,15 @@ public class GameManager : MonoBehaviour
                 gameOverUI.SetActive(true);
                 gamePlayUI.SetActive(false);
                 gameOverTimeTxt.SetText("Score: " + (lastScoreMin.ToString().Length > 1 ? lastScoreMin.ToString() : "0" + lastScoreMin.ToString()) + ":" + (((int)lastScoreSec).ToString().Length > 1 ? ((int)lastScoreSec).ToString() : "0" + ((int)lastScoreSec).ToString()));
-                StoreHighScore();
+                SetHighScore();
+                GetHighScore();
                 //reset timer
                 minutes = 0;
                 seconds = 0;
-
                 
+
+
+
 
             }
 
@@ -89,6 +104,7 @@ public class GameManager : MonoBehaviour
         isGameStarted = true;
         playerSpawner.SetActive(true);
         enemySpawner.SetActive(true);
+        Invoke("ShowHideHelpText", 3f);
 
     }
 
@@ -139,11 +155,22 @@ public class GameManager : MonoBehaviour
     public void MuteAllBtn()
     {
         AudioListener.volume = 0;
+
+        mainMenuMuteBtn.SetActive(false);
+        mainMenuUnMuteBtn.SetActive(true);
+        gameMuteBtn.SetActive(false);
+        gameUnMuteBtn.SetActive(true);
+
     }
 
     public void UnmuteAllBtn()
     {
         AudioListener.volume = 1;
+
+        mainMenuMuteBtn.SetActive(true);
+        mainMenuUnMuteBtn.SetActive(false);
+        gameMuteBtn.SetActive(true);
+        gameUnMuteBtn.SetActive(false);
     }
 
 
@@ -158,11 +185,28 @@ public class GameManager : MonoBehaviour
         Debug.Log("TODO");
     }
 
-    private void StoreHighScore()
+    private void SetHighScore()
     {
-        PlayerPrefs.SetInt("Minutes", (int)lastScoreMin);
-        PlayerPrefs.SetInt("Minutes", (int)lastScoreMin);
+        if (allTimeHighScoreMinutes <= lastScoreMin)
+        {
+            if (allTimeHighScoreSeconds <= lastScoreSec)
+            {
+                PlayerPrefs.SetInt("Minutes", (int)lastScoreMin);
+                PlayerPrefs.SetInt("Seconds", (int)lastScoreSec);
+            }
+        }
+
+        
+        
     }
+
+    public void GetHighScore()
+    {
+        allTimeHighScoreMinutes = PlayerPrefs.GetInt("Minutes");
+        allTimeHighScoreSeconds = PlayerPrefs.GetInt("Seconds");
+        mainMenuHighScore.SetText("High Score: " + (allTimeHighScoreMinutes.ToString().Length > 1 ? allTimeHighScoreMinutes.ToString() : "0" + allTimeHighScoreMinutes.ToString()) + ":" + (((int)allTimeHighScoreSeconds).ToString().Length > 1 ? ((int)allTimeHighScoreSeconds).ToString() : "0" + ((int)allTimeHighScoreSeconds).ToString()));
+    }
+
 
     private void DestroyEnemyObjects()
     {
@@ -180,5 +224,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(obj);
         }
+    }
+
+
+    private void ShowHideHelpText()
+    {
+        helpText.SetActive(false);
     }
 }

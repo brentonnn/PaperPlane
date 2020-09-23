@@ -96,10 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d46b44de4c89547bdf1aea25cd5b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  rotationSpeed: 2
-  playerBoundsX: 3.25
-  playerBoundsY: 6
+  movementSpeed: 4
+  rotationSpeed: 4
+  playerBoundsX: 3.15
+  playerBoundsY: 5.5
   playerDeathAudio: {fileID: 616249319780169489}
   sr: {fileID: 309199046562490292}
   sp: {fileID: 21300000, guid: 83790779eeee840098d9c1793decc88e, type: 3}

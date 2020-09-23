@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
             GameManager.isGameOver = true;
             PlayerDeath();
             rotationSpeed *= 2;
+            ControlHandler.left = false;
+            ControlHandler.right = false;
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
         }
         

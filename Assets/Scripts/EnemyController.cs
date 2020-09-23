@@ -47,5 +47,6 @@ public class EnemyController : MonoBehaviour
     private void Disappear()
     {
         Destroy(gameObject);
+        EnemySpawner.count--;
     }
 }
