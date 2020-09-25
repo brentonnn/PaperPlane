@@ -41,7 +41,8 @@ public class GameManager : MonoBehaviour
         minutes = 0;
         seconds = 0f;
         GetHighScore();
-        
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
     }
 
     // Update is called once per frame
@@ -121,6 +122,7 @@ public class GameManager : MonoBehaviour
         enemySpawner.SetActive(false);
         PlayerSpawnerController.pCount = 0;
         EnemySpawner.ResetCount();
+        BoostSpawner.ResetCount();
 
     }
 
@@ -137,6 +139,7 @@ public class GameManager : MonoBehaviour
         isGameStarted = true;
         PlayerSpawnerController.pCount = 0;
         EnemySpawner.ResetCount();
+        BoostSpawner.ResetCount();
     }
 
     public void BackToMainMenuBtn()
@@ -151,6 +154,7 @@ public class GameManager : MonoBehaviour
         mainMenuUI.SetActive(true);
         PlayerSpawnerController.pCount = 0;
         EnemySpawner.ResetCount();
+        BoostSpawner.ResetCount();
 
     }
 
@@ -210,7 +214,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    private void DestroyEnemyObjects()
+    public void DestroyEnemyObjects()
     {
         GameObject[] allObjects = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject obj in allObjects)

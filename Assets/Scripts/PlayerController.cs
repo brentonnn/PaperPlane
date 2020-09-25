@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerBoundsX = 3.25F;
     [SerializeField] private float playerBoundsY = 6f;
 
+    private GameManager gm;
+
     [SerializeField] private AudioSource playerDeathAudio = null;
 
     [SerializeField] private SpriteRenderer sr = null;
@@ -76,7 +78,29 @@ public class PlayerController : MonoBehaviour
             ControlHandler.right = false;
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
         }
+
+        if (col.tag == "BombBoost")
+        {
+            GameObject[] allObjects = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject obj in allObjects)
+            {
+                Destroy(obj);
+            }
+            Debug.Log("In bomb");
+        }
+
+        if (col.tag == "FanBoost")
+        {
+            Debug.Log("In fan");
+            movementSpeed += 1f;
+            Invoke("ResetSpeedBoost", 3);
+        }
         
+    }
+
+    private void ResetSpeedBoost()
+    {
+        movementSpeed -= .5f;
     }
 
     private void PlayerDeath()
