@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2316660459190462777}
   - component: {fileID: 2316660459190462778}
   - component: {fileID: 2801210791256718596}
+  - component: {fileID: 6192266266639672834}
   m_Layer: 8
   m_Name: StaplerEnemy
   m_TagString: Enemy
@@ -89,6 +90,25 @@ MonoBehaviour:
   enemyBoundsY: 6
   minTime: 6
   maxTime: 10
+--- !u!95 &6192266266639672834
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2316660459190462783}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 789f88fdc8f164056b05f2104cc00321, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2316660459350226133
 GameObject:
   m_ObjectHideFlags: 0

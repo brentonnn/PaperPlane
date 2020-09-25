@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7402854901275704313}
   - component: {fileID: 7402854901275704314}
   - component: {fileID: 8476596326178510741}
+  - component: {fileID: 2597637567053367755}
   m_Layer: 8
   m_Name: GlueEnemy
   m_TagString: Enemy
@@ -89,6 +90,25 @@ MonoBehaviour:
   enemyBoundsY: 6
   minTime: 6
   maxTime: 12
+--- !u!95 &2597637567053367755
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7402854901275704315}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1624e1cf69524701af4ed7102cbe049, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7402854902984315949
 GameObject:
   m_ObjectHideFlags: 0

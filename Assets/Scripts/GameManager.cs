@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
                 gameOverTimeTxt.SetText("Score: " + (lastScoreMin.ToString().Length > 1 ? lastScoreMin.ToString() : "0" + lastScoreMin.ToString()) + ":" + (((int)lastScoreSec).ToString().Length > 1 ? ((int)lastScoreSec).ToString() : "0" + ((int)lastScoreSec).ToString()));
                 SetHighScore();
                 GetHighScore();
+
+                DestroyEnemyObjects();
                 //reset timer
                 minutes = 0;
                 seconds = 0;
@@ -104,7 +106,7 @@ public class GameManager : MonoBehaviour
         isGameStarted = true;
         playerSpawner.SetActive(true);
         enemySpawner.SetActive(true);
-        Invoke("ShowHideHelpText", 3f);
+        Invoke("ShowHideHelpText", 3);
 
     }
 
